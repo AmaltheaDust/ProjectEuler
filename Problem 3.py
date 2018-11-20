@@ -1,100 +1,81 @@
-"""
-The prime factors of 13195 are 5, 7, 13 and 29.
-
-What is the largest prime factor of the number 600851475143 ?
-"""
-
-numValue = 600851475143
-
 import math
-import threading
 import sys
-"""
-def isPrimeFactor(n):
-    if n % 2 == 0:
-        return False
-    if n % 3 == 0:
-        return False
-    if n % 5 == 0:
-        return False
-    if n % 7 == 0:
-        return False
-    if n % 11 == 0:
-        return False
-    if n % 13 == 0:
-        return False
 
-"""
-
-
-
-divisor_list = []
 
 class highestPrimeFactors:
 
-
-
+    # changes the divisor list above by populating it with the divisors of number n
+    # also returns the divisor list
+    # please clear the list after you use it if you only intend to use it once.
     def allFactors(self, n):
 
-        global divisor_list
+        divisor_list = []
 
         divisor_num = 2
-
         iterate_divisor = 2
-
         test_divisor_num = 0
-
-
 
         while divisor_num > 1:
 
-            divisor_num = int(math.floor(n / iterate_divisor))
-            #print(divisor_num)
-            if n % divisor_num == 0:
+            if n % iterate_divisor == 0:
+                divisor_num = (n / iterate_divisor)
+                if divisor_num == 1:
+                    sys.exit()
+                print(divisor_num)
 
+                if self.isPrime(divisor_num) == True:
+                    print(str(divisor_num) + " is the highest prime factor of " + str(n))
+                    sys.exit()
 
+                if n % divisor_num == 0:
+                    if test_divisor_num != divisor_num:
+                        # print(divisor_num)
 
-                if test_divisor_num != divisor_num:
+                        divisor_list.append(divisor_num)
 
-                    print(divisor_num)
+                    test_divisor_num = divisor_num
 
-                    divisor_list.append(divisor_num)
+                iterate_divisor += 1
 
-                test_divisor_num = divisor_num
-
-                #return True
-
-            iterate_divisor += 1
+            else:
+                iterate_divisor += 1
+                continue
 
         return divisor_list
 
+    # checks to see if the divisor list is only populated by 1
+    # returns True if so
     def isPrime(self, n):
-        if self.allFactors(n) == [1]:
+        if self.allFactors(n) == [1.0]:
             print("This number is prime")
             return True
 
-    def highestPrimeFactor(self):
+    # initially runs all factors on number n, then iterates through said list, and in turn runs the all factors once more on iteration i, and then checks to see if iteration i is prime.
+    def highestPrimeFactor(self, n):
+        local_divisor_list = []
+        local_divisor_list = self.allFactors(n)
+        for i in self.divisor_list:
+            if i == 1:
+                print(n)
+                print("your number is prime")
+                # print("this is a prime number")
+                # sys.exit()
+            local_divisor_list = []
+            local_divisor_list = self.allFactors(i)
 
-        global divisor_list
-
-        while True:
-            for i in divisor_list:
-                if self.isPrime(i) == True:
-                    print("This is the highest prime factor")
-                    sys.exit()
-
-
+            if self.isPrime(i) == True:
+                print(i)
+                print("This is the highest prime factor")
+                sys.exit()
 
 
 object1 = highestPrimeFactors()
 object2 = highestPrimeFactors()
 
+numValue = 13195
+# numValue = 600851475143
 
-t1 = threading.Thread(target=object1.isPrime, args = (13,))
-t2 = threading.Thread(target=object2.highestPrimeFactor)
+object2.highestPrimeFactor(numValue)
+# print(object2.divisor_list)
 
-t1.start()
-t2.start()
-
-#object1.isPrime(13)
-
+# object1.isPrime(15)
