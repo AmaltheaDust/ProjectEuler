@@ -1,0 +1,74 @@
+
+
+import sys
+
+def palindromeChecker(value):
+
+    if list(str(value)) == list(reversed(str(value))):
+        #print("this is a palindrome")
+        return True
+
+    else:
+        return False
+
+list1 = [999,999]
+
+ticlist = [999,999]
+
+testvar = 0
+
+finalvalue = 0
+
+while ticlist[1] > 1:
+    #iterates twice
+    for i in list1:
+        #iterates from 999 to 1
+        for i2 in reversed(range(list1[0])):
+            testvar = i2 * ticlist[1]
+
+
+
+            if palindromeChecker(testvar) == True:
+
+                if testvar > finalvalue:
+                    finalvalue = testvar
+                    print(testvar)
+                    print("this number is it!")
+
+
+            if i2 == 1:
+                ticlist[1] -= 1
+
+
+
+            #for  i3 in reversed(range(list1[i])):
+
+
+
+
+
+"""
+
+def palindromeChecker(value):
+
+    if list(str(value)) == list(reversed(str(value))):
+        print("this is a palindrome")
+
+def productPossibilities(numberofdigits, maxiteratorvalue):
+    listofdigits = []
+    fullvalue = 1
+    ticlist = []
+
+    #creates list of values, at the specified maxiteration
+    #creates fullvalue
+    for i in range(numberofdigits):
+        listofdigits.append(maxiteratorvalue)
+
+    ticlist = listofdigits
+
+    print(listofdigits)
+
+
+productPossibilities(2, 9)
+
+"""
