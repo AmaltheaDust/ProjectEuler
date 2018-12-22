@@ -11,6 +11,8 @@ def palindromeChecker(value):
     else:
         return False
 
+
+
 list1 = [999,999]
 
 ticlist = [999,999]
