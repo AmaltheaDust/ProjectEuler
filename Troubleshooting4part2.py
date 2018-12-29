@@ -26,12 +26,14 @@ def productPossibilities(numberofdigits, maxiteratorvalue):
 
     #preps our list of values
     LOD = []
+    LOT = []
 
     #creates list of values, at the specified maxiteration
     for i in range(numberofdigits):
         LOD.append(maxiteratorvalue)
+        LOT.append(maxiteratorvalue)
 
-    LOT = LOD
+
 
 
     listsize_external = 1
@@ -46,9 +48,10 @@ def productPossibilities(numberofdigits, maxiteratorvalue):
 
         for i in reversed(range(maxiteratorvalue+1)):
 
+            #TODO unsure why LOD is not behaving like a value here.
+            LOT = LOD
 
-
-            #LOT[listsize] -= 1
+            #LOD[listsize] -= 1
 
             print("number value iteration number: " + str(i))
             print("")
@@ -57,13 +60,15 @@ def productPossibilities(numberofdigits, maxiteratorvalue):
 
 
 
+
                 if i2 == 0:
 
                     break
 
+                #TODO also unsure why printing LOT or LOD appears the same whether I put LOT = LOD or LOD = LOT above
+                print(LOT)
 
-                print(LOD)
-                #TODO currently working on this section to "countdown"
+                #currently working on this section to "countdown"
                 LOT[listsize] -= 1
 
                 if LOT[listsize] == 0:
