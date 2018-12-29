@@ -13,8 +13,7 @@ from functools import reduce
 def palindromeChecker(value):
 
     if list(str(value)) == list(reversed(str(value))):
-        print(value)
-        print("this is a palindrome")
+        return True
 
 #function that multiplies all arguments inside the list argument, also might just be provided as a one liner later
 def multiplyAllItemsInList(listvalue):
@@ -27,6 +26,7 @@ def productPossibilities(numberofdigits, maxiteratorvalue):
     #preps our list of values
     LOD = []
     LOT = []
+    finalvalue = 0
 
     #creates list of values, at the specified maxiteration
     for i in range(numberofdigits):
@@ -48,25 +48,29 @@ def productPossibilities(numberofdigits, maxiteratorvalue):
 
         for i in reversed(range(maxiteratorvalue+1)):
 
-            #TODO unsure why LOD is not behaving like a value here.
+
+
+
+
             LOT = list(LOD)
 
-            #LOD[listsize] -= 1
+            if i == 0:
+                break
 
             print("number value iteration number: " + str(i))
             print("")
 
             for i2 in reversed(range(maxiteratorvalue+1)):
 
-
-
-
                 if i2 == 0:
 
                     break
 
-                #TODO also unsure why printing LOT or LOD appears the same whether I put LOT = LOD or LOD = LOT above
                 print(LOT)
+                if palindromeChecker(multiplyAllItemsInList(LOT)) == True:
+                    if multiplyAllItemsInList(LOT) > finalvalue:
+                        finalvalue = multiplyAllItemsInList(LOT)
+                        finallist = list(LOT)
 
                 #currently working on this section to "countdown"
                 LOT[listsize] -= 1
@@ -75,8 +79,12 @@ def productPossibilities(numberofdigits, maxiteratorvalue):
                     LOD[listsize - 1] -= 1
 
 
-                print("    max value iteration number: " + str(i2))
+
+
+                print("    value of i2 within maxiteratorvalue: " + str(i2))
             print()
 
+    print(finalvalue)
+    print(finallist)
 
-productPossibilities(2,5)
+productPossibilities(2,999)
