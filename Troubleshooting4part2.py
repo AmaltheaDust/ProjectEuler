@@ -49,7 +49,7 @@ def productPossibilities(numberofdigits, maxiteratorvalue):
         for i in reversed(range(maxiteratorvalue+1)):
 
             #TODO unsure why LOD is not behaving like a value here.
-            LOT = LOD
+            LOT = list(LOD)
 
             #LOD[listsize] -= 1
 
@@ -72,7 +72,7 @@ def productPossibilities(numberofdigits, maxiteratorvalue):
                 LOT[listsize] -= 1
 
                 if LOT[listsize] == 0:
-                    LOT[listsize - 1] -= 1
+                    LOD[listsize - 1] -= 1
 
 
                 print("    max value iteration number: " + str(i2))
